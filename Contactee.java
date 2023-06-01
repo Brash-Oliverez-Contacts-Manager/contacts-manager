@@ -1,6 +1,11 @@
-public class Contactee extends ContactMethods {
+import java.util.ArrayList;
+
+public class Contactee {
     protected String name;
     protected String phoneNum;
+
+    protected ArrayList<Contactee> contactList = new ArrayList<>();
+
 
     public String getName() {
         return name;
@@ -22,10 +27,4 @@ public class Contactee extends ContactMethods {
         this.name = name;
         this.phoneNum = phoneNum;
     }
-
-//    public void printContacts() {
-//        for (Contactee contactee : contactList) {
-//            System.out.println("hello");
-//        }
-//    }
 }
