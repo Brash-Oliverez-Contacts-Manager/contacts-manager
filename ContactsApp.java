@@ -12,9 +12,13 @@ public class ContactsApp extends ContactMethods{
         contactlist.add(luiz);
 
 
-        for (Contactee contactee : contactlist) {
-            printContacts(contactee);
-        }
+
+        //new method for contacts
+//        System.out.println("Name       | Phone Number    |");
+//        System.out.println("------------------------------");
+//        for (Contactee contactee : contactlist) {
+//            System.out.println(contactee.toString());
+//        }
 
 
 

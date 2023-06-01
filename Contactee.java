@@ -23,6 +23,12 @@ public class Contactee {
         this.phoneNum = phoneNum;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%-10s | %-15s |", name, phoneNum);
+    }
+
+
     public Contactee(String name, String phoneNum) {
         this.name = name;
         this.phoneNum = phoneNum;
