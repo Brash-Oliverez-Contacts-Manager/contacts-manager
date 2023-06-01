@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,9 +21,9 @@ public class ContactsApp extends ContactMethods{
         contactlist.add(luis);
 
 
-//        for (Contactee contactee : contactlist) {
-//            printContacts(contactee);
-//        }
+
+
+
 
 
 
@@ -35,10 +37,16 @@ public class ContactsApp extends ContactMethods{
             choice = sc.nextLine();
 
             switch (choice) {
-                case "1" -> System.out.println(contactlist);//VIEW CONTACTS
+                case "1" -> {
+                    System.out.println("Name       | Phone Number    |");
+                    System.out.println("------------------------------");
+                    for (Contactee contactee : contactlist) {
+                        System.out.println(contactee.toString());
+                    }
 //                case "2" -> {}//ADD NEW CONTACT
 //                case "3" -> System.out.println("Exiting the application. Have a good day....I SAID GOOD DAY!");
 //                case "4" -> {}//Delete an existing contact
+                }
                 case "5"->{} //Exit
 
             }
