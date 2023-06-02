@@ -22,8 +22,6 @@ public class ContactsApp extends ContactMethods{
 
 
 
-
-
         do {
             System.out.println("1. View Contacts");
 //            System.out.println("2. Add new contact");
