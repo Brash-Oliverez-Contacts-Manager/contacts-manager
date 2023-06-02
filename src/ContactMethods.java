@@ -94,6 +94,7 @@ public class ContactMethods {
         }
     }
 
+
     public void loadContactsFromFile() {
         Path inputPath = Paths.get(relativePath);
         try {
