@@ -11,13 +11,8 @@ public class ContactsApp extends ContactMethods {
 
         ContactMethods contactMethods = new ContactMethods();
 
-        ArrayList<Contactee> contactlist = new ArrayList<>();
+        ArrayList<Contactee> contactList = new ArrayList<>();
 
-        Contactee tyresz = new Contactee("tyresz", "01000101001");
-        contactlist.add(tyresz);
-
-        Contactee luis = new Contactee("Luis", "010001010111");
-        contactlist.add(luis);
 
 
         do {
@@ -30,25 +25,9 @@ public class ContactsApp extends ContactMethods {
             choice = sc.nextLine();
 
             switch (choice) {
-
-
                 case "1" -> {contactMethods.printStringsToConsole();}
                 case "2" -> {contactMethods.addContacts();}
-
-                case "3" -> {
-                    //prompt user for input
-                    System.out.println("\nEnter a username to see more about them:");
-                    String chosenContact = sc.nextLine();
-
-                    //retrieve the student from the map
-                    for (Contactee contactee : contactlist) {
-                        if (contactee.getName().equalsIgnoreCase(chosenContact)) {
-                            System.out.println("Name: " + contactee.getName());
-                            System.out.println("Phone #: " + contactee.getPhoneNum());
-                        }
-
-                    }
-                }
+                case "3" -> {contactMethods.searchContact();}
                 case "4" -> {contactMethods.deleteContact();}
                 case "5" -> {} //Exit
             }

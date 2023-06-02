@@ -56,5 +56,26 @@ class ContactMethods {
         }
         System.out.println("------------------------");
     }
+
+
+
+
+    public void searchContact() {
+        System.out.println("\nEnter a Contact name to see more about them: ");
+
+        String chosenContact = sc.nextLine();
+
+        //retrieve the student from the map
+        for (Contactee contactee : contactList) {
+            if (contactee.getName().equalsIgnoreCase(chosenContact)) {
+                System.out.println("Name: " + contactee.getName());
+                System.out.println("Phone #: " + contactee.getPhoneNum());
+            }
+
+        }
+    }
+
+
+
 }
 
