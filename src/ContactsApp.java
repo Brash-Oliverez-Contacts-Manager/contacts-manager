@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,9 +17,6 @@ public class ContactsApp extends ContactMethods{
 
         Contactee luis = new Contactee("Luis", "010001010111");
         contactlist.add(luis);
-
-
-
 
 
 
