@@ -1,7 +1,10 @@
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
@@ -19,20 +22,20 @@ public class ContactMethods {
         System.out.println("Phone Number: ");
         String newNum = sc.nextLine();
         Contactee newPerson = new Contactee(newName, newNum);
-        for (Contactee contactee : contactList) {
-            if (contactee.getName().equalsIgnoreCase(newPerson.getName())) {
-                System.out.println("Person already exists. Do you want to add anyway? (y/n)");
-                String response = sc.nextLine();
-                if (response.equalsIgnoreCase("y")) {
-                    contactList.add(newPerson);
-                    System.out.printf("%s has been added to the contacts.%n", newName);
-                    printContactToFile();
-                } else {
-                    System.out.println("Contact not added.");
-                }
-                return;
+
+        if (contactList.contains(newPerson)) {
+            System.out.println("Person already exists. Do you want to add anyway? (y/n)");
+            String response = sc.nextLine();
+            if (response.equalsIgnoreCase("y")) {
+                contactList.add(newPerson);
+                System.out.printf("%s has been added to the contacts.%n", newName);
+                printContactToFile();
+            } else {
+                System.out.println("Contact not added.");
             }
+            return;
         }
+
         contactList.add(newPerson);
         System.out.printf("%s has been added to the contacts.%n", newName);
         System.out.println("------------------------------");
@@ -47,7 +50,6 @@ public class ContactMethods {
                 if (contactee.getName().equalsIgnoreCase(nameToDelete)) {
                     contactList.remove(contactee);
                     System.out.printf("%s has been deleted from the contacts.%n", nameToDelete);
-                    printContactToFile();
                     return;
                 }
             }
@@ -59,12 +61,24 @@ public class ContactMethods {
     }
 
     public void printStringsToConsole() {
-        System.out.println("Name       | Phone Number    |");
-        System.out.println("------------------------------");
-        for (Contactee contactee : contactList) {
-            System.out.println(contactee.toString());
+        String relativePath = "contacts.txt";
+        Path inputPath = Paths.get(relativePath);
+        try {
+            List<String> lines = Files.readAllLines(inputPath);
+            System.out.println("Name       | Phone Number    |");
+            System.out.println("------------------------------");
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    String name = parts[0].trim();
+                    String phoneNum = parts[1].trim();
+                    System.out.printf("%-10s | %-15s |%n", name, phoneNum);
+                }
+            }
+            System.out.println("------------------------------");
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
-        System.out.println("------------------------------");
     }
 
     public void searchContact() {
@@ -83,11 +97,11 @@ public class ContactMethods {
     public void printContactToFile() {
         Path outputPath = Paths.get(relativePath);
         try {
-           ArrayList<Contactee> formattedContacts = Contactee.contactList;
+            List<String> formattedContacts = new ArrayList<>();
             for (Contactee contactee : contactList) {
-                formattedContacts.add(contactee.getName()+","+contactee.getPhoneNum());
+                formattedContacts.add(contactee.getName() + "," + contactee.getPhoneNum());
             }
-            Files.write(outputPath, formattedContacts);
+            Files.write(outputPath, formattedContacts, Charset.defaultCharset());
         } catch (IOException exception) {
             System.out.println("An error occurred while writing to the file.");
             exception.printStackTrace();
