@@ -2,8 +2,8 @@
 import java.util.ArrayList;
 
 public class Contactee {
-    protected String name;
-    protected String phoneNum;
+    protected static String name;
+    protected static String phoneNum;
 
     protected ArrayList<Contactee> contactList = new ArrayList<>();
 

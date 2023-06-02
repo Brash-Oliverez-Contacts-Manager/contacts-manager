@@ -22,9 +22,9 @@ public class ContactsApp extends ContactMethods {
 
         do {
             System.out.println("1. View Contacts");
-//            System.out.println("2. Add new contact");
+            System.out.println("2. Add new contact");
             System.out.println("3. Search a contact by name");
-//            System.out.println("4. Delete an existing contact");
+            System.out.println("4. Delete an existing contact");
             System.out.println("5. Exit");
             System.out.println(" Enter an option (1, 2, 3, 4, or 5): ");
             choice = sc.nextLine();
@@ -39,12 +39,9 @@ public class ContactsApp extends ContactMethods {
                         System.out.println(contactee.toString());
                     }
                 }
-
-
-
-                //                case "2" -> {} ADD NEW CONTACT
-
-
+                case "2" -> {
+                    contactMethods.addContacts();
+                }
 
                 case "3" -> {
                     //prompt user for input
@@ -61,24 +58,15 @@ public class ContactsApp extends ContactMethods {
                     }
                 }
 
-                    //check if the student exists in the map
-
+//                case "4" -> {}//Delete an existing contact
                 case "5" -> {
                 } //Exit
-
-                }
-
-
-
-                //                case "4" -> {}//Delete an existing contact
-
-
-
-
-            System.out.println();
+            }
 
         } while (!choice.equals("5"));
+        System.out.println();
+
     }
 
-}
 
+}
