@@ -3,11 +3,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
-=======
 import java.util.ConcurrentModificationException;
->>>>>>> main
 import java.util.Scanner;
 
 
@@ -59,15 +56,7 @@ class ContactMethods {
         System.out.println("------------------------------");
     }
 
-<<<<<<< HEAD
-    public void printStringsToConsole(){
-        System.out.println("| Name:       | Phone #:      |");
-        System.out.println(" ------------------------------");
-        for (Contactee contactee : contactList) {
-            System.out.println(contactee.toString());
-        }
-        System.out.println(" ------------------------");
-=======
+
     public void printStringsToConsole() {
         System.out.println("Name       | Phone Number    |");
         System.out.println("------------------------------");
@@ -75,7 +64,6 @@ class ContactMethods {
             System.out.println(contactee.toString());
         }
         System.out.println("------------------------------");
->>>>>>> main
     }
 
 
@@ -95,7 +83,7 @@ class ContactMethods {
     }
 
 
-<<<<<<< HEAD
+
     public void printContactToFile(){
         Path outPut = Path.of("contact.txt");
         try {
@@ -105,7 +93,6 @@ class ContactMethods {
         }
     }
 
-=======
->>>>>>> main
+
 }
 
