@@ -1,5 +1,9 @@
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -49,12 +53,12 @@ class ContactMethods {
     }
 
     public void printStringsToConsole(){
-        System.out.println("Name       | Phone Number    |");
-        System.out.println("------------------------------");
+        System.out.println("| Name:       | Phone #:      |");
+        System.out.println(" ------------------------------");
         for (Contactee contactee : contactList) {
             System.out.println(contactee.toString());
         }
-        System.out.println("------------------------");
+        System.out.println(" ------------------------");
     }
 
 
@@ -75,6 +79,15 @@ class ContactMethods {
         }
     }
 
+
+    public void printContactToFile(){
+        Path outPut = Path.of("contact.txt");
+        try {
+            Files.write(outPut, (Iterable<? extends CharSequence>) contactList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 }
