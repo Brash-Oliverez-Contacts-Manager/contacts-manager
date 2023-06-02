@@ -3,7 +3,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.List;
+=======
+import java.util.ConcurrentModificationException;
+>>>>>>> main
 import java.util.Scanner;
 
 
@@ -35,23 +39,27 @@ class ContactMethods {
         }
         contactList.add(newPerson);
         System.out.printf("%s has been added to the contacts.%n", newName);
-        System.out.println("------------------------");
+        System.out.println("------------------------------");
     }
 
-    public void deleteContact(){
+    public void deleteContact() {
         System.out.println("Name of contact to delete: ");
         String nameToDelete = sc.nextLine();
-        for (Contactee contactee : contactList) {
-            if(contactee.getName().equalsIgnoreCase(nameToDelete)){
-                System.out.printf("%s has been deleted from the contacts.%n", nameToDelete);
-                contactList.remove(contactee);
-            }else{
-                System.out.printf("%s was not found in the contacts.%n", nameToDelete);
+        try {
+            for (Contactee contactee : contactList) {
+                if (contactee.getName().equalsIgnoreCase(nameToDelete)) {
+                    contactList.remove(contactee);
+                    System.out.printf("%s has been deleted from the contacts.%n", nameToDelete);
+                }else {
+                    System.out.printf("%s was not found in the contacts.%n", nameToDelete);
+                }
             }
-        }
-        System.out.println("------------------------");
+        } catch (ConcurrentModificationException e) {}
+
+        System.out.println("------------------------------");
     }
 
+<<<<<<< HEAD
     public void printStringsToConsole(){
         System.out.println("| Name:       | Phone #:      |");
         System.out.println(" ------------------------------");
@@ -59,9 +67,16 @@ class ContactMethods {
             System.out.println(contactee.toString());
         }
         System.out.println(" ------------------------");
+=======
+    public void printStringsToConsole() {
+        System.out.println("Name       | Phone Number    |");
+        System.out.println("------------------------------");
+        for (Contactee contactee : contactList) {
+            System.out.println(contactee.toString());
+        }
+        System.out.println("------------------------------");
+>>>>>>> main
     }
-
-
 
 
     public void searchContact() {
@@ -80,6 +95,7 @@ class ContactMethods {
     }
 
 
+<<<<<<< HEAD
     public void printContactToFile(){
         Path outPut = Path.of("contact.txt");
         try {
@@ -89,5 +105,7 @@ class ContactMethods {
         }
     }
 
+=======
+>>>>>>> main
 }
 
