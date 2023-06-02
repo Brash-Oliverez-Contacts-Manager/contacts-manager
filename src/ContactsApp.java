@@ -1,8 +1,6 @@
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ContactsApp extends ContactMethods {
+public class ContactsApp {
 
     public static void main(String[] args) {
 
@@ -11,13 +9,7 @@ public class ContactsApp extends ContactMethods {
 
         ContactMethods contactMethods = new ContactMethods();
 
-        Contactee contactee = new Contactee("luis", "1234567896");
-
-        contactMethods.printContactToFile();
-
-        ArrayList<Contactee> contactList = new ArrayList<>();
-
-
+        contactMethods.loadContactsFromFile();
 
         do {
             System.out.println("1. View Contacts");
@@ -25,21 +17,30 @@ public class ContactsApp extends ContactMethods {
             System.out.println("3. Search a contact by name");
             System.out.println("4. Delete an existing contact");
             System.out.println("5. Exit");
-            System.out.println(" Enter an option (1, 2, 3, 4, or 5): ");
+            System.out.println("Enter an option (1, 2, 3, 4, or 5): ");
             choice = sc.nextLine();
 
             switch (choice) {
-                case "1" -> {contactMethods.printStringsToConsole();}
-                case "2" -> {contactMethods.addContacts();}
-                case "3" -> {contactMethods.searchContact();}
-                case "4" -> {contactMethods.deleteContact();}
-                case "5" -> {} //Exit
+                case "1":
+                    contactMethods.printStringsToConsole();
+                    break;
+                case "2":
+                    contactMethods.addContacts();
+                    break;
+                case "3":
+                    contactMethods.searchContact();
+                    break;
+                case "4":
+                    contactMethods.deleteContact();
+                    break;
+                case "5":
+                    break; // Exit
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
 
         } while (!choice.equals("5"));
         System.out.println();
-
     }
-
-
 }

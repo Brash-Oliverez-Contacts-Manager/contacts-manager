@@ -6,13 +6,11 @@ public class Contactee {
     protected static String name;
     protected static String phoneNum;
 
-    protected ArrayList<Contactee> contactList = new ArrayList<>();
+    protected static ArrayList<Contactee> contactList = new ArrayList<>();
 
 
 
-    Contactee luis = new Contactee("luis", "1456785246");
-    Contactee tyresz = new Contactee("tyresz", "12345678996");
-    Contactee rob = new Contactee("rob", "49245846544");
+
 
 
     public String getName() {
