@@ -11,6 +11,10 @@ public class ContactsApp extends ContactMethods {
 
         ContactMethods contactMethods = new ContactMethods();
 
+        Contactee contactee = new Contactee("luis", "1234567896");
+
+        contactMethods.printContactToFile();
+
         ArrayList<Contactee> contactList = new ArrayList<>();
 
 
