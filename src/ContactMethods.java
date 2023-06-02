@@ -31,6 +31,30 @@ class ContactMethods {
         }
         contactList.add(newPerson);
         System.out.printf("%s has been added to the contacts.%n", newName);
+        System.out.println("------------------------");
+    }
+
+    public void deleteContact(){
+        System.out.println("Name of contact to delete: ");
+        String nameToDelete = sc.nextLine();
+        for (Contactee contactee : contactList) {
+            if(contactee.getName().equalsIgnoreCase(nameToDelete)){
+                System.out.printf("%s has been deleted from the contacts.%n", nameToDelete);
+                contactList.remove(contactee);
+            }else{
+                System.out.printf("%s was not found in the contacts.%n", nameToDelete);
+            }
+        }
+        System.out.println("------------------------");
+    }
+
+    public void printStringsToConsole(){
+        System.out.println("Name       | Phone Number    |");
+        System.out.println("------------------------------");
+        for (Contactee contactee : contactList) {
+            System.out.println(contactee.toString());
+        }
+        System.out.println("------------------------");
     }
 }
 

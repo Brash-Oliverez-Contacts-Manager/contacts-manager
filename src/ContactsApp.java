@@ -32,16 +32,8 @@ public class ContactsApp extends ContactMethods {
             switch (choice) {
 
 
-                case "1" -> {
-                    System.out.println("Name       | Phone Number    |");
-                    System.out.println("------------------------------");
-                    for (Contactee contactee : contactlist) {
-                        System.out.println(contactee.toString());
-                    }
-                }
-                case "2" -> {
-                    contactMethods.addContacts();
-                }
+                case "1" -> {contactMethods.printStringsToConsole();}
+                case "2" -> {contactMethods.addContacts();}
 
                 case "3" -> {
                     //prompt user for input
@@ -57,10 +49,8 @@ public class ContactsApp extends ContactMethods {
 
                     }
                 }
-
-//                case "4" -> {}//Delete an existing contact
-                case "5" -> {
-                } //Exit
+                case "4" -> {contactMethods.deleteContact();}
+                case "5" -> {} //Exit
             }
 
         } while (!choice.equals("5"));
