@@ -3,44 +3,30 @@ import java.util.Scanner;
 public class ContactsApp {
 
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-        String choice;
-
-        ContactMethods contactMethods = new ContactMethods();
-
-        contactMethods.loadContactsFromFile();
-
-        do {
-            System.out.println("1. View Contacts");
-            System.out.println("2. Add new contact");
-            System.out.println("3. Search a contact by name");
-            System.out.println("4. Delete an existing contact");
-            System.out.println("5. Exit");
-            System.out.println("Enter an option (1, 2, 3, 4, or 5): ");
-            choice = sc.nextLine();
-
+        ContactManager manager = new ContactManager("contacts.txt");
+        while (true) {
+            manager.showMainMenu();
+            int choice = manager.getUserChoice();
             switch (choice) {
-                case "1":
-                    contactMethods.printStringsToConsole();
+                case 1:
+                    manager.viewContacts();
                     break;
-                case "2":
-                    contactMethods.addContacts();
+                case 2:
+                    manager.addContact();
                     break;
-                case "3":
-                    contactMethods.searchContact();
+                case 3:
+                    manager.searchContacts();
                     break;
-                case "4":
-                    contactMethods.deleteContact();
+                case 4:
+                    manager.deleteContact();
                     break;
-                case "5":
-                    break; // Exit
+                case 5:
+                    manager.writeContactsToFile();
+                    System.out.println("Goodbye!");
+                    return;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
+                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
             }
-
-        } while (!choice.equals("5"));
-        System.out.println();
+        }
     }
 }
