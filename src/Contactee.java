@@ -3,40 +3,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Contactee {
-    protected static String name;
-    protected static String phoneNum;
+    private String name;
+    private String phoneNumber;
 
-    protected static ArrayList<Contactee> contactList = new ArrayList<>();
-
-
-
-
-
+    public Contactee(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    @Override
     public String toString() {
-        return String.format("%-10s | %-15s |", name, phoneNum);
+        return String.format("%-20s | %-12s", name, formatPhoneNumber(phoneNumber));
     }
 
-
-    public Contactee(String name, String phoneNum) {
-        this.name = name;
-        this.phoneNum = phoneNum;
+    private String formatPhoneNumber(String phoneNumber) {
+        // Add dashes to phone number
+        if (phoneNumber.length() == 10) {
+            return String.format("%s-%s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3, 6), phoneNumber.substring(6));
+        } else if (phoneNumber.length() == 7) {
+            return String.format("%s-%s", phoneNumber.substring(0, 3), phoneNumber.substring(3));
+        } else {
+            return phoneNumber;
+        }
     }
 }
